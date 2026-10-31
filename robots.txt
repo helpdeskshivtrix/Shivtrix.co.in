@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shivtrix.helpdesk-shivtrix-co-in.workers.dev/sitemap.xml
