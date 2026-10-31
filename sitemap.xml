@@ -1,41 +1,31 @@
-const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://sitemaps.org">
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://workers.dev</loc>
+    <loc>https://helpdesk-shivtrix-co-in.workers.dev/</loc>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://workers.devservices.html</loc>
+    <loc>https://helpdesk-shivtrix-co-in.workers.dev/services.html</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://workers.devhelpdesk.html</loc>
+    <loc>https://helpdesk-shivtrix-co-in.workers.dev/helpdesk.html</loc>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://workers.devabout.html</loc>
+    <loc>https://helpdesk-shivtrix-co-in.workers.dev/about.html</loc>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://workers.devcontact.html</loc>
+    <loc>https://helpdesk-shivtrix-co-in.workers.dev/contact.html</loc>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://workers.devportfolio.html</loc>
+    <loc>https://helpdesk-shivtrix-co-in.workers.dev/portfolio.html</loc>
     <priority>0.60</priority>
   </url>
   <url>
-    <loc>https://workers.devblog.html</loc>
+    <loc>https://helpdesk-shivtrix-co-in.workers.dev/blog.html</loc>
     <priority>0.60</priority>
   </url>
-</urlset>`.trim(); // This line explicitly deletes all hidden leading spaces
-
-// Inside your main routing conditional check:
-if (url.pathname === '/sitemap.xml') {
-  return new Response(sitemapXml, {
-    headers: {
-      'Content-Type': 'application/xml; charset=utf-8',
-      'X-Content-Type-Options': 'nosniff'
-    }
-  });
-}
+</urlset>
