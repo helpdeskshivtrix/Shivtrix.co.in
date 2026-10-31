@@ -1,53 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?>
+const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://sitemaps.org">
-
   <url>
     <loc>https://workers.dev</loc>
-    <lastmod>2026-10-31</lastmod>
-    <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
-
   <url>
     <loc>https://workers.devservices.html</loc>
-    <lastmod>2026-10-31</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
-
   <url>
     <loc>https://workers.devhelpdesk.html</loc>
-    <lastmod>2026-10-31</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
-
   <url>
     <loc>https://workers.devabout.html</loc>
-    <lastmod>2026-10-31</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
-
   <url>
     <loc>https://workers.devcontact.html</loc>
-    <lastmod>2026-10-31</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
-
   <url>
     <loc>https://workers.devportfolio.html</loc>
-    <lastmod>2026-10-31</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.60</priority>
   </url>
-
   <url>
     <loc>https://workers.devblog.html</loc>
-    <lastmod>2026-10-31</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>0.60</priority>
   </url>
+</urlset>`.trim(); // This line explicitly deletes all hidden leading spaces
 
-</urlset>
+// Inside your main routing conditional check:
+if (url.pathname === '/sitemap.xml') {
+  return new Response(sitemapXml, {
+    headers: {
+      'Content-Type': 'application/xml; charset=utf-8',
+      'X-Content-Type-Options': 'nosniff'
+    }
+  });
+}
