@@ -30,7 +30,7 @@
   });
 
   var revealEls = document.querySelectorAll(
-    ".tech-card, .service-split, .sector-row, .process-step, .info-card, .faq-item, .term-card, .cap-card, .why-item, .work-card, .ind-item, .term-win, .tl-step"
+    ".tech-card, .service-split, .sector-row, .process-step, .info-card, .faq-item, .term-card, .cap-card, .price-card, .why-item, .work-card, .ind-item, .term-win, .tl-step"
   );
   if ("IntersectionObserver" in window && revealEls.length) {
     revealEls.forEach(function (el) { el.classList.add("reveal-init"); });
