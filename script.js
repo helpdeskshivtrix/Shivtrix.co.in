@@ -3,11 +3,22 @@
 
   var mobileBtn = document.getElementById("mobileBtn");
   var navMenu = document.getElementById("navMenu");
+  function setMenu(open) {
+    if (!navMenu || !mobileBtn) return;
+    navMenu.classList.toggle("open", open);
+    mobileBtn.setAttribute("aria-expanded", String(open));
+    mobileBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
   if (mobileBtn && navMenu) {
-    mobileBtn.addEventListener("click", function () {
-      var open = navMenu.classList.toggle("open");
-      mobileBtn.setAttribute("aria-expanded", String(open));
+    mobileBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      setMenu(!navMenu.classList.contains("open"));
     });
+    document.addEventListener("click", function (e) {
+      if (navMenu.classList.contains("open") && !e.target.closest(".navbar")) setMenu(false);
+    });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
+    window.addEventListener("resize", function () { if (window.innerWidth > 960) setMenu(false); }, { passive: true });
   }
 
   var page = window.location.pathname.split("/").pop() || "index.html";
@@ -30,7 +41,7 @@
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08 });
+    }, { threshold: 0.05, rootMargin: "0px 0px -4% 0px" });
     revealEls.forEach(function (el) { io.observe(el); });
   }
 
@@ -96,6 +107,8 @@
   var svcSelect = document.getElementById("fService");
   if (svcSelect) {
     var wanted = new URLSearchParams(window.location.search).get("service");
+    var legacy = { "Computer Repairing": "IT Hardware & Software", "Networking": "Networking & Cabling", "EPBX (Telephone)": "EPBX & Telecom" };
+    if (wanted && legacy[wanted]) wanted = legacy[wanted];
     if (wanted) {
       Array.prototype.forEach.call(svcSelect.options, function (o) {
         if (o.value === wanted) svcSelect.value = wanted;
@@ -113,17 +126,9 @@
 
   // Sticky navbar shadow on scroll + close mobile menu on link click
   var nav = document.querySelector(".navbar");
-  if (nav) {
-    window.addEventListener("scroll", function () {
-      nav.classList.toggle("scrolled", window.scrollY > 8);
-    }, { passive: true });
-  }
   if (navMenu) {
     navMenu.addEventListener("click", function (e) {
-      if (e.target.closest("a")) {
-        navMenu.classList.remove("open");
-        if (mobileBtn) mobileBtn.setAttribute("aria-expanded", "false");
-      }
+      if (e.target.closest("a")) setMenu(false);
     });
   }
 
@@ -221,55 +226,34 @@
   // ===== Extra effects =====
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Scroll progress bar
+  // Scroll progress bar + navbar shadow + back-to-top: one throttled handler
   var bar = document.createElement("div");
   bar.className = "scroll-progress";
   document.body.appendChild(bar);
-  function updateBar() {
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + "%";
+  var top = document.createElement("button");
+  top.type = "button";
+  top.className = "to-top";
+  top.setAttribute("aria-label", "Back to top");
+  top.innerHTML = "&uarr;";
+  document.body.appendChild(top);
+  top.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }); });
+
+  var ticking = false, docH = 0;
+  function measure() { docH = document.documentElement.scrollHeight - window.innerHeight; }
+  function paintScroll() {
+    ticking = false;
+    var y = window.pageYOffset || 0;
+    bar.style.transform = "scaleX(" + (docH > 0 ? Math.min(1, y / docH) : 0).toFixed(4) + ")";
+    if (nav) nav.classList.toggle("scrolled", y > 8);
+    top.classList.toggle("show", y > 400);
   }
-  window.addEventListener("scroll", updateBar, { passive: true });
-  updateBar();
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(paintScroll); } }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", function () { measure(); onScroll(); }, { passive: true });
+  window.addEventListener("load", function () { measure(); onScroll(); });
+  measure(); paintScroll();
 
   if (!reduce) {
-    // Cursor glow (desktop only)
-    if (window.matchMedia("(hover: hover)").matches) {
-      var glow = document.createElement("div");
-      glow.className = "cursor-glow";
-      document.body.appendChild(glow);
-      window.addEventListener("mousemove", function (e) {
-        glow.style.transform = "translate(" + (e.clientX - 150) + "px," + (e.clientY - 150) + "px)";
-        glow.style.opacity = "1";
-      }, { passive: true });
-      document.addEventListener("mouseleave", function () { glow.style.opacity = "0"; });
-    }
-
-    // 3D tilt on cards
-    document.querySelectorAll(".tech-card, .stat-card, .hero-visual").forEach(function (card) {
-      card.addEventListener("mousemove", function (e) {
-        var r = card.getBoundingClientRect();
-        var x = (e.clientX - r.left) / r.width - 0.5;
-        var y = (e.clientY - r.top) / r.height - 0.5;
-        card.style.transform = "perspective(800px) rotateX(" + (-y * 6).toFixed(2) + "deg) rotateY(" + (x * 8).toFixed(2) + "deg) translateY(-3px)";
-      });
-      card.addEventListener("mouseleave", function () { card.style.transform = ""; });
-    });
-
-    // Typing effect on hero highlight word
-    var typeEl = document.querySelector(".hero-title .cyan");
-    if (typeEl && document.querySelector(".hero-grid")) {
-      var full = typeEl.textContent;
-      typeEl.textContent = "";
-      typeEl.classList.add("typing");
-      var i = 0;
-      (function type() {
-        typeEl.textContent = full.slice(0, ++i);
-        if (i < full.length) setTimeout(type, 80);
-        else setTimeout(function () { typeEl.classList.remove("typing"); }, 1800);
-      })();
-    }
-
     // Ripple on buttons
     document.addEventListener("click", function (e) {
       var b = e.target.closest(".btn-cyan, .btn-outline, .btn-quote");
@@ -285,18 +269,6 @@
       setTimeout(function () { rip.remove(); }, 650);
     });
   }
-
-  // Back-to-top button
-  var top = document.createElement("button");
-  top.type = "button";
-  top.className = "to-top";
-  top.setAttribute("aria-label", "Back to top");
-  top.innerHTML = "&uarr;";
-  document.body.appendChild(top);
-  top.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
-  window.addEventListener("scroll", function () {
-    top.classList.toggle("show", window.scrollY > 400);
-  }, { passive: true });
 
   // ===== Timeline: animate when scrolled into view =====
   var timelines = document.querySelectorAll("[data-timeline]");
@@ -338,19 +310,23 @@
 
   // ===== Hero live network background =====
   var cvs = document.querySelector(".hero-net");
-  if (cvs && !reduce) {
+  var bigScreen = window.matchMedia("(min-width: 961px) and (hover: hover)").matches;
+  if (cvs && !reduce && bigScreen) {
     var ctx = cvs.getContext("2d"), W = 0, H = 0, nodes = [], running = true, mx = -999, my = -999;
     function sizeCvs() {
       var r = cvs.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
       W = r.width; H = r.height;
       cvs.width = W * dpr; cvs.height = H * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var n = Math.max(24, Math.min(70, Math.round(W * H / 16000)));
+      var n = Math.max(18, Math.min(42, Math.round(W * H / 26000)));
       nodes = [];
       for (var i = 0; i < n; i++) nodes.push({ x: Math.random() * W, y: Math.random() * H, vx: rnd(-0.25, 0.25), vy: rnd(-0.25, 0.25), r: rnd(1, 2.2) });
     }
-    function frame() {
+    var lastT = 0;
+    function frame(t) {
       if (!running) return;
+      if (document.hidden || t - lastT < 32) { requestAnimationFrame(frame); return; }
+      lastT = t;
       ctx.clearRect(0, 0, W, H);
       for (var i = 0; i < nodes.length; i++) {
         var a = nodes[i];
@@ -376,18 +352,18 @@
       requestAnimationFrame(frame);
     }
     sizeCvs();
-    window.addEventListener("resize", sizeCvs);
+    var rzT; window.addEventListener("resize", function () { clearTimeout(rzT); rzT = setTimeout(sizeCvs, 200); });
     var heroEl = cvs.parentNode;
     heroEl.addEventListener("mousemove", function (e) { var r = cvs.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; });
     heroEl.addEventListener("mouseleave", function () { mx = my = -999; });
     if ("IntersectionObserver" in window) {
       new IntersectionObserver(function (en) {
         var vis = en[0].isIntersecting;
-        if (vis && !running) { running = true; frame(); }
+        if (vis && !running) { running = true; requestAnimationFrame(frame); }
         running = vis;
       }).observe(cvs);
     }
-    frame();
+    requestAnimationFrame(frame);
   }
 
   // ===== Scroll reveal for headings / blocks =====
@@ -399,7 +375,7 @@
       entries.forEach(function (en) {
         if (en.isIntersecting) { en.target.classList.add("reveal-visible"); xio.unobserve(en.target); }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.05, rootMargin: "0px 0px -4% 0px" });
     extra.forEach(function (el) {
       if (el.classList.contains("reveal-visible") || el.classList.contains("reveal-init")) return;
       el.classList.add("reveal-init");

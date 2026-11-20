@@ -7,11 +7,12 @@
   <meta name="description" content="Address: Shivtrix Computer Service Center, Old Hotel NeelKamal, Raniganj - Suri Rd, near Shubham Travels, Asansol, New Kenda, West Bengal 713342" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.helpdesk-shivtrix-co-in.workers.dev/" />
-  <meta property="og:image" content="https://www.helpdesk-shivtrix-co-in.workers.dev/hero-image-2.png" />
+  <meta property="og:image" content="https://www.helpdesk-shivtrix-co-in.workers.dev/hero-image-2.jpg" />
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <meta name="theme-color" content="#050a14" />
+  <link rel="preload" as="image" href="hero-image-2.webp" type="image/webp" />
   <link rel="stylesheet" href="style.css" />
   <script type="application/ld+json">
   {
@@ -36,10 +37,9 @@
 <body>
   <header class="navbar">
     <div class="container nav-wrap">
-      <a class="logo" href="index.html">
+      <a class="logo" href="index.html" aria-label="Shivtrix Computer Service Center - Home">
         <span class="logo-mark"><img class="logo-still" src="logo.png" alt="Shivtrix logo" width="46" height="46" /><img class="logo-anim" src="logo-anim.webp" alt="" aria-hidden="true" width="46" height="46" loading="lazy" decoding="async" /></span><span class="logo-text"><strong>Shiv<em>Trix</em></strong><small>Computer Service Center</small></span>
       </a>
-      <button class="mobile-btn" id="mobileBtn" type="button" aria-expanded="false" aria-controls="navMenu">[MENU]</button>
       <nav aria-label="Primary Navigation">
         <ul class="nav-menu" id="navMenu">
           <li><a href="index.html">Home</a></li>
@@ -50,15 +50,18 @@
           <li><a href="helpdesk.html">Helpdesk</a></li>
         </ul>
       </nav>
-      <a class="btn-quote" href="helpdesk.html">REQUEST QUOTE</a>
+      <div class="nav-actions">
+        <a class="btn-quote" href="helpdesk.html"><span class="q-long">Request&nbsp;</span>Quote</a>
+        <button class="mobile-btn" id="mobileBtn" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+      </div>
     </div>
   </header>
   <main>
     <!-- HERO -->
     <section class="hero dash-hero">
       <canvas class="hero-net" aria-hidden="true"></canvas>
-      <div class="container hero-grid">
-        <div>
+      <div class="container hero-grid hero-split">
+        <div class="hero-copy">
           <div class="sys-status" style="margin-top:0; margin-bottom:14px;">SYSTEMS ONLINE</div>
           <h1 class="hero-title">Your Trusted <span class="cyan">IT Partner</span></h1>
           <p class="hero-sub">From CCTV surveillance to server setups and structured networking, we deliver technical solutions that keep your operations safe, efficient, and future-ready.</p>
@@ -67,10 +70,13 @@
             <a class="btn-outline" href="#contact">Consultation</a>
           </div>
         </div>
-        <div class="hero-visual">
-          <img src="hero-image-2.png" alt="Shivtrix Computer Service Center CCTV camera and server rack" />
-          <div class="visual-caption"><span>NODE: SHIVTRIX-KENDA-01</span><span class="sys-status" style="margin-top:0;">SYSTEMS ONLINE</span></div>
-        </div>
+        <figure class="hero-visual hero-wide">
+          <picture>
+            <source type="image/webp" srcset="hero-image-2.webp" />
+            <img src="hero-image-2.jpg" width="1600" height="893" alt="Professional IT infrastructure services: CCTV and access control, networking and cabling, EPBX and telecom, hardware and PC repair, servers and IT support" fetchpriority="high" decoding="async" />
+          </picture>
+          <figcaption class="visual-caption"><span>NODE: SHIVTRIX-KENDA-01</span><span class="sys-status" style="margin-top:0;">SYSTEMS ONLINE</span></figcaption>
+        </figure>
       </div>
     </section>
 
@@ -98,9 +104,18 @@
           </div>
           <a class="btn-outline" href="services.html">View All Specs &rarr;</a>
         </div>
-        <div class="cap-grid">
-        <article class="cap-card">
-          <div class="cap-media"><img src="images/cctv.jpg" alt="CCTV camera with analytics dashboard" loading="lazy" /></div>
+        <div class="cap-grid cap-grid-core">
+        <article class="cap-card" id="card-it-hardware">
+          <a class="cap-media" href="services.html#it-hardware" tabindex="-1" aria-hidden="true"><img src="images/pc-laptop.jpg" alt="Technician repairing a computer" loading="lazy" decoding="async" /></a>
+          <div class="cap-body">
+            <h3>IT Hardware &amp; Software</h3>
+            <p>We troubleshoot hardware and software problems to get computers back to stable working condition.</p>
+            <div class="pill-tags"><span class="pill-tag">Desktop</span><span class="pill-tag">Laptop</span><span class="pill-tag">Hardware</span><span class="pill-tag">Software</span></div>
+            <a class="full-details-link" href="helpdesk.html?service=IT%20Hardware%20%26%20Software#formPanel">Get a Quote <svg class="mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="cap-card" id="card-cctv">
+          <a class="cap-media" href="services.html#cctv" tabindex="-1" aria-hidden="true"><img src="images/cctv.jpg" alt="CCTV camera with analytics dashboard" loading="lazy" decoding="async" /></a>
           <div class="cap-body">
             <h3>CCTV</h3>
             <p>We design practical surveillance systems with proper camera placement, recording setup, and long-term service support.</p>
@@ -108,26 +123,38 @@
             <a class="full-details-link" href="helpdesk.html?service=CCTV#formPanel">Get a Quote <svg class="mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </article>
-        <article class="cap-card">
-          <div class="cap-media"><img src="images/epbx.jpg" alt="EPBX telephone system" loading="lazy" /></div>
+        <article class="cap-card" id="card-networking">
+          <a class="cap-media" href="services.html#networking" tabindex="-1" aria-hidden="true"><img src="images/networking.jpg" alt="Networking rack and structured cabling" loading="lazy" decoding="async" /></a>
           <div class="cap-body">
-            <h3>EPBX (Telephone)</h3>
+            <h3>Networking &amp; Cabling</h3>
+            <p>From structured cabling and routing to Wi-Fi planning, we build dependable networks for everyday work.</p>
+            <div class="pill-tags"><span class="pill-tag">LAN/WAN</span><span class="pill-tag">Cabling</span><span class="pill-tag">Switching</span><span class="pill-tag">Wi-Fi</span></div>
+            <a class="full-details-link" href="helpdesk.html?service=Networking%20%26%20Cabling#formPanel">Get a Quote <svg class="mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="cap-card" id="card-epbx">
+          <a class="cap-media" href="services.html#epbx" tabindex="-1" aria-hidden="true"><img src="images/epbx.jpg" alt="EPBX telephone system" loading="lazy" decoding="async" /></a>
+          <div class="cap-body">
+            <h3>EPBX &amp; Telecom</h3>
             <p>We deploy EPBX systems that simplify internal communication and improve call handling.</p>
             <div class="pill-tags"><span class="pill-tag">EPBX Setup</span><span class="pill-tag">Extensions</span><span class="pill-tag">Call Routing</span><span class="pill-tag">Support</span></div>
-            <a class="full-details-link" href="helpdesk.html?service=EPBX%20%28Telephone%29#formPanel">Get a Quote <svg class="mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="full-details-link" href="helpdesk.html?service=EPBX%20%26%20Telecom#formPanel">Get a Quote <svg class="mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </article>
-        <article class="cap-card">
-          <div class="cap-media"><img src="images/networking.jpg" alt="Networking router and switches" loading="lazy" /></div>
+        <article class="cap-card" id="card-server-it-admin">
+          <a class="cap-media" href="services.html#server-it-admin" tabindex="-1" aria-hidden="true"><img src="images/server-cloud.jpg" alt="Server, NAS and cloud setup" loading="lazy" decoding="async" /></a>
           <div class="cap-body">
-            <h3>Networking</h3>
-            <p>From routing and switching to Wi-Fi planning, we build dependable networks for everyday work.</p>
-            <div class="pill-tags"><span class="pill-tag">LAN/WAN</span><span class="pill-tag">Routing</span><span class="pill-tag">Switching</span><span class="pill-tag">Wi-Fi</span></div>
-            <a class="full-details-link" href="helpdesk.html?service=Networking#formPanel">Get a Quote <svg class="mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <h3>Server &amp; IT Administrative Support</h3>
+            <p>Custom NAS builds, secure file sharing, cloud workspace setup, remote backup, and ongoing IT administration with annual maintenance contracts.</p>
+            <div class="pill-tags"><span class="pill-tag">NAS</span><span class="pill-tag">Cloud &amp; Backup</span><span class="pill-tag">Admin Support</span><span class="pill-tag">AMC</span></div>
+            <a class="full-details-link" href="helpdesk.html?service=Server%20%26%20IT%20Administrative%20Support#formPanel">Get a Quote <svg class="mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </article>
-        <article class="cap-card">
-          <div class="cap-media"><img src="images/electrical.jpg" alt="Electrical wiring installation" loading="lazy" /></div>
+        </div>
+        <div class="cap-subhead"><span class="eyebrow">ACCESS, SECURITY &amp; POWER</span></div>
+        <div class="cap-grid">
+        <article class="cap-card" id="card-electrical">
+          <a class="cap-media" href="services.html#electrical" tabindex="-1" aria-hidden="true"><img src="images/electrical.jpg" alt="Electrical wiring installation" loading="lazy" decoding="async" /></a>
           <div class="cap-body">
             <h3>Electrical Wiring</h3>
             <p>We provide clean electrical line work to support reliable power delivery for installations.</p>
@@ -135,8 +162,8 @@
             <a class="full-details-link" href="helpdesk.html?service=Electrical%20Wiring#formPanel">Get a Quote <svg class="mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </article>
-        <article class="cap-card">
-          <div class="cap-media"><img src="images/biometrics.jpg" alt="Biometric fingerprint scanning" loading="lazy" /></div>
+        <article class="cap-card" id="card-biometrics">
+          <a class="cap-media" href="services.html#biometrics" tabindex="-1" aria-hidden="true"><img src="images/biometrics.jpg" alt="Biometric fingerprint scanning" loading="lazy" decoding="async" /></a>
           <div class="cap-body">
             <h3>Biometrics</h3>
             <p>We deploy biometric systems for accurate user verification and organized attendance handling.</p>
@@ -144,8 +171,8 @@
             <a class="full-details-link" href="helpdesk.html?service=Biometrics#formPanel">Get a Quote <svg class="mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </article>
-        <article class="cap-card">
-          <div class="cap-media"><img src="images/access-log.jpg" alt="RFID keycard access control" loading="lazy" /></div>
+        <article class="cap-card" id="card-access-control">
+          <a class="cap-media" href="services.html#access-control" tabindex="-1" aria-hidden="true"><img src="images/access-log.jpg" alt="RFID keycard access control" loading="lazy" decoding="async" /></a>
           <div class="cap-body">
             <h3>Access Log (Card Permission)</h3>
             <p>We install and configure card permission systems to control and track access points.</p>
@@ -153,35 +180,8 @@
             <a class="full-details-link" href="helpdesk.html?service=Access%20Log%20%28Card%20Permission%29#formPanel">Get a Quote <svg class="mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </article>
-        <article class="cap-card">
-          <div class="cap-media"><img src="images/pc-laptop.jpg" alt="PC and Laptop Repair" loading="lazy" /></div>
-          <div class="cap-body">
-            <h3>PC &amp; Laptop Repair</h3>
-            <p>Hardware repair, Windows installation, slow-PC speed-ups, virus removal, and data recovery.</p>
-            <div class="pill-tags"><span class="pill-tag">Hardware</span><span class="pill-tag">Windows OS</span><span class="pill-tag">Upgrades</span><span class="pill-tag">Data Recovery</span></div>
-            <a class="full-details-link" href="helpdesk.html?service=Computer%20Repairing#formPanel">Get a Quote <svg class="mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </div>
-        </article>
-        <article class="cap-card">
-          <div class="cap-media"><img src="images/server-cloud.jpg" alt="Server, NAS and Cloud" loading="lazy" /></div>
-          <div class="cap-body">
-            <h3>Server, NAS &amp; Cloud</h3>
-            <p>Custom NAS builds, secure file sharing, cloud workspace setup, and remote backup solutions.</p>
-            <div class="pill-tags"><span class="pill-tag">NAS</span><span class="pill-tag">File Sharing</span><span class="pill-tag">Cloud Setup</span><span class="pill-tag">Backups</span></div>
-            <a class="full-details-link" href="helpdesk.html?service=Networking#formPanel">Get a Quote <svg class="mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </div>
-        </article>
-        <article class="cap-card">
-          <div class="cap-media"><img src="images/general-it.jpg" alt="General IT support workstation" loading="lazy" /></div>
-          <div class="cap-body">
-            <h3>General IT Support</h3>
-            <p>Custom PC building, software installation, hardware troubleshooting, and annual maintenance contracts.</p>
-            <div class="pill-tags"><span class="pill-tag">PC Builds</span><span class="pill-tag">Software</span><span class="pill-tag">Troubleshooting</span><span class="pill-tag">AMC</span></div>
-            <a class="full-details-link" href="helpdesk.html?service=Computer%20Repairing#formPanel">Get a Quote <svg class="mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </div>
-        </article>
         </div>
-        <div class="custom-sector-card" style="margin-top:34px;">
+<div class="custom-sector-card" style="margin-top:34px;">
           <div>
             <div class="eyebrow">CUSTOM DEPLOYMENT</div>
             <h2 class="section-heading" style="font-size:1.75rem;">Need a tailored infrastructure solution?</h2>
@@ -344,7 +344,7 @@
                 <div class="field" style="margin-bottom:0;"><label for="fName">Name *</label><input type="text" id="fName" required placeholder="Your name" autocomplete="name" /></div>
                 <div class="field" style="margin-bottom:0;"><label for="fEmail">Email</label><input type="email" id="fEmail" placeholder="you@example.com" autocomplete="email" /></div>
               </div>
-              <div class="field"><label for="fService">Subject</label><select id="fService"><option value="CCTV">CCTV</option><option value="EPBX (Telephone)">EPBX (Telephone)</option><option value="Networking">Networking</option><option value="Electrical Wiring">Electrical Wiring</option><option value="Biometrics">Biometrics</option><option value="Access Log (Card Permission)">Access Log (Card Permission)</option><option value="Computer Repairing">Computer Repairing</option><option value="General Enquiry">General Enquiry</option></select></div>
+              <div class="field"><label for="fService">Subject</label><select id="fService"><option value="IT Hardware &amp; Software">IT Hardware &amp; Software</option><option value="CCTV">CCTV</option><option value="Networking &amp; Cabling">Networking &amp; Cabling</option><option value="EPBX &amp; Telecom">EPBX &amp; Telecom</option><option value="Server &amp; IT Administrative Support">Server &amp; IT Administrative Support</option><option value="Electrical Wiring">Electrical Wiring</option><option value="Biometrics">Biometrics</option><option value="Access Log (Card Permission)">Access Log (Card Permission)</option><option value="General Enquiry">General Enquiry</option></select></div>
               <div class="field"><label for="fMsg">Message *</label><textarea id="fMsg" rows="3" required placeholder="Write your message here..."></textarea></div>
               <div class="action-row">
                 <button type="button" id="sendWhatsAppBtn" class="btn-cyan">SEND TO WHATSAPP &rarr;</button>

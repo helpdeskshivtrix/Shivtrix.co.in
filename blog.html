@@ -7,10 +7,9 @@
   <link rel="stylesheet" href="style.css" /></head>
 <body>  <header class="navbar">
     <div class="container nav-wrap">
-      <a class="logo" href="index.html">
+      <a class="logo" href="index.html" aria-label="Shivtrix Computer Service Center - Home">
         <span class="logo-mark"><img class="logo-still" src="logo.png" alt="Shivtrix logo" width="46" height="46" /><img class="logo-anim" src="logo-anim.webp" alt="" aria-hidden="true" width="46" height="46" loading="lazy" decoding="async" /></span><span class="logo-text"><strong>Shiv<em>Trix</em></strong><small>Computer Service Center</small></span>
       </a>
-      <button class="mobile-btn" id="mobileBtn" type="button" aria-expanded="false" aria-controls="navMenu">[MENU]</button>
       <nav aria-label="Primary Navigation">
         <ul class="nav-menu" id="navMenu">
           <li><a href="index.html">Home</a></li>
@@ -21,9 +20,78 @@
           <li><a href="helpdesk.html">Helpdesk</a></li>
         </ul>
       </nav>
-      <a class="btn-quote" href="helpdesk.html">REQUEST QUOTE</a>
+      <div class="nav-actions">
+        <a class="btn-quote" href="helpdesk.html"><span class="q-long">Request&nbsp;</span>Quote</a>
+        <button class="mobile-btn" id="mobileBtn" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+      </div>
     </div>
-  </header><main class="section"><div class="container"><div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; <span style="color:var(--text-main);">Guides</span></div><div class="sys-status" style="margin-top:0; margin-bottom:12px;">ALL SYSTEMS OPERATIONAL // NEW KENDA 713342</div><h1 class="hero-title" style="font-size: clamp(2.1rem, 4vw, 3.2rem);">Technical <span class="cyan">Guides</span></h1><p class="hero-sub">Address: Shivtrix Computer Service Center, Old Hotel NeelKamal, Raniganj - Suri Rd, near Shubham Travels, Asansol, New Kenda, West Bengal 713342</p></div></main>  <footer class="footer">
+  </header><main class="section guides-page">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; <span style="color:var(--text-main);">Guides</span></div>
+      <div class="sys-status" style="margin-top:0; margin-bottom:12px;">ALL SYSTEMS OPERATIONAL // NEW KENDA 713342</div>
+      <h1 class="hero-title" style="font-size: clamp(2.1rem, 4vw, 3.2rem);">Technical <span class="cyan">Guides</span></h1>
+      <p class="hero-sub">Practical how-to guides from the Shivtrix team on CCTV, networking, PCs and data safety. Guides are PIN-protected. Unlock once and read them all.</p>
+      <div class="hero-btns">
+        <a class="btn-cyan" href="#guideList">Browse Guides</a>
+        <a class="btn-outline" href="#customGuide">Request Custom Guide</a>
+      </div>
+
+      <section class="lock-panel" id="lockPanel" aria-labelledby="lockTitle">
+        <div class="lock-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <div class="lock-body">
+          <h2 id="lockTitle">Guides are locked</h2>
+          <p>Enter the 4-digit PIN to unlock. The PIN is the <strong>current Indian time (IST)</strong> in 24-hour format, <span class="mono">HHMM</span>. Example: 2:05 PM = <span class="mono">1405</span>. It changes every minute, and 1 minute before or after is accepted.</p>
+          <form id="pinForm" autocomplete="off">
+            <label class="sr-only" for="pinInput">PIN</label>
+            <input id="pinInput" class="pin-input" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="&bull;&bull;&bull;&bull;" autocomplete="off" />
+            <button type="submit" class="btn-cyan">Unlock</button>
+          </form>
+          <p class="pin-msg" id="pinMsg" role="alert" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <div class="guide-toolbar" id="guideToolbar" hidden>
+        <span class="unlock-badge">UNLOCKED</span>
+        <input type="search" id="guideFilter" class="search-bar" placeholder="Search guides: CCTV, Wi-Fi, backup, password..." aria-label="Search guides" />
+        <button type="button" class="btn-outline" id="relockBtn">Lock Again</button>
+      </div>
+
+      <div class="guide-grid" id="guideList"></div>
+      <p id="guideEmpty" class="guide-empty" hidden>No matching guide found.</p>
+
+      <section class="custom-guide" id="customGuide">
+        <div>
+          <div class="eyebrow">CUSTOM GUIDE</div>
+          <h2 class="section-heading" style="font-size:1.6rem;">Need a guide for your own setup?</h2>
+          <p class="section-sub">Tell us the topic, such as your CCTV model, office network or backup plan, and we will prepare a guide for you.</p>
+        </div>
+        <div class="cg-form">
+          <div class="field"><label for="cgTopic">Guide topic *</label><input type="text" id="cgTopic" maxlength="200" placeholder="e.g. Set up mobile view for my DVR" /></div>
+          <div class="field"><label for="cgName">Your name</label><input type="text" id="cgName" maxlength="80" placeholder="Optional" autocomplete="name" /></div>
+          <div class="action-row">
+            <button type="button" class="btn-cyan" id="cgWa">Request Custom Guide &rarr;</button>
+            <button type="button" class="btn-outline" id="cgMail">Send by Email</button>
+          </div>
+          <p class="pin-msg" id="cgMsg" role="alert" aria-live="polite"></p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="reader-overlay" id="reader" hidden role="dialog" aria-modal="true" aria-labelledby="readerTitle">
+    <div class="reader-card">
+      <div class="reader-bar">
+        <div><h2 id="readerTitle"></h2><div class="reader-meta" id="readerMeta"></div></div>
+        <button type="button" class="reader-x" id="readerClose" aria-label="Close guide">&times;</button>
+      </div>
+      <div class="reader-body" id="readerBody"></div>
+      <div class="reader-actions">
+        <button type="button" class="btn-cyan" id="readerPrint">Print / Save as PDF</button>
+        <button type="button" class="btn-outline" id="readerCopy">Copy Text</button>
+        <button type="button" class="btn-outline" id="readerWa">Share on WhatsApp</button>
+      </div>
+    </div>
+  </div>  <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
@@ -63,4 +131,6 @@
         <span class="mono">ALL SYSTEMS OPERATIONAL // NEW KENDA 713342</span>
       </div>
     </div>
-  </footer><script src="script.js"></script></body></html>
+  </footer><script src="script.js"></script>
+  <script src="guides-data.js"></script>
+  <script src="guides.js"></script></body></html>

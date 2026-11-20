@@ -33,10 +33,9 @@
 <body>
   <header class="navbar">
     <div class="container nav-wrap">
-      <a class="logo" href="index.html">
+      <a class="logo" href="index.html" aria-label="Shivtrix Computer Service Center - Home">
         <span class="logo-mark"><img class="logo-still" src="logo.png" alt="Shivtrix logo" width="46" height="46" /><img class="logo-anim" src="logo-anim.webp" alt="" aria-hidden="true" width="46" height="46" loading="lazy" decoding="async" /></span><span class="logo-text"><strong>Shiv<em>Trix</em></strong><small>Computer Service Center</small></span>
       </a>
-      <button class="mobile-btn" id="mobileBtn" type="button" aria-expanded="false" aria-controls="navMenu">[MENU]</button>
       <nav aria-label="Primary Navigation">
         <ul class="nav-menu" id="navMenu">
           <li><a href="index.html">Home</a></li>
@@ -47,7 +46,10 @@
           <li><a href="helpdesk.html">Helpdesk</a></li>
         </ul>
       </nav>
-      <a class="btn-quote" href="helpdesk.html">REQUEST QUOTE</a>
+      <div class="nav-actions">
+        <a class="btn-quote" href="helpdesk.html"><span class="q-long">Request&nbsp;</span>Quote</a>
+        <button class="mobile-btn" id="mobileBtn" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+      </div>
     </div>
   </header>
   <main class="section">

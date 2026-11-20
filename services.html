@@ -35,10 +35,9 @@
 <body>
   <header class="navbar">
     <div class="container nav-wrap">
-      <a class="logo" href="index.html">
+      <a class="logo" href="index.html" aria-label="Shivtrix Computer Service Center - Home">
         <span class="logo-mark"><img class="logo-still" src="logo.png" alt="Shivtrix logo" width="46" height="46" /><img class="logo-anim" src="logo-anim.webp" alt="" aria-hidden="true" width="46" height="46" loading="lazy" decoding="async" /></span><span class="logo-text"><strong>Shiv<em>Trix</em></strong><small>Computer Service Center</small></span>
       </a>
-      <button class="mobile-btn" id="mobileBtn" type="button" aria-expanded="false" aria-controls="navMenu">[MENU]</button>
       <nav aria-label="Primary Navigation">
         <ul class="nav-menu" id="navMenu">
           <li><a href="index.html">Home</a></li>
@@ -49,7 +48,10 @@
           <li><a href="helpdesk.html">Helpdesk</a></li>
         </ul>
       </nav>
-      <a class="btn-quote" href="helpdesk.html">REQUEST QUOTE</a>
+      <div class="nav-actions">
+        <a class="btn-quote" href="helpdesk.html"><span class="q-long">Request&nbsp;</span>Quote</a>
+        <button class="mobile-btn" id="mobileBtn" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+      </div>
     </div>
   </header>
 
@@ -60,7 +62,17 @@
         <div class="eyebrow">OUR CAPABILITIES</div>
         <h1 class="hero-title" style="font-size: clamp(2.2rem, 4.2vw, 3.3rem);">Technical Services &amp; <span class="cyan">Solutions</span></h1>
         <p class="hero-sub">Professional installation, configuration, and long-term maintenance of mission-critical IT infrastructure. Every solution is engineered for performance, security, and reliability.</p>
-        <input type="search" id="serviceFilter" class="search-bar" placeholder="Filter services: CCTV, EPBX, Networking, Electrical, Biometrics, Access Log, Computer..." aria-label="Filter services" />
+        <input type="search" id="serviceFilter" class="search-bar" placeholder="Filter services: Hardware, CCTV, Networking, EPBX, Server, Electrical, Biometrics..." aria-label="Filter services" />
+        <ul class="hero-chips hero-chips-8" aria-label="Jump to a service">
+          <li><a href="#it-hardware"><b>01</b><span>IT Hardware &amp; Software</span></a></li>
+          <li><a href="#cctv"><b>02</b><span>CCTV</span></a></li>
+          <li><a href="#networking"><b>03</b><span>Networking &amp; Cabling</span></a></li>
+          <li><a href="#epbx"><b>04</b><span>EPBX &amp; Telecom</span></a></li>
+          <li><a href="#server-it-admin"><b>05</b><span>Server &amp; IT Admin Support</span></a></li>
+          <li><a href="#electrical"><b>06</b><span>Electrical Wiring</span></a></li>
+          <li><a href="#biometrics"><b>07</b><span>Biometrics</span></a></li>
+          <li><a href="#access-control"><b>08</b><span>Access Log</span></a></li>
+        </ul>
       </div>
     </section>
 
@@ -68,8 +80,32 @@
 
     <section class="section" style="padding-top: 12px;">
       <div class="container">
-        <!-- 1. CCTV -->
-        <div class="service-split" data-service-block>
+        <!-- 1. Computer Repairing -->
+        <div class="service-split" id="it-hardware" data-service-block>
+          <div>
+            <figure class="svc-photo"><img src="images/pc-laptop.jpg" alt="Technician repairing a computer" loading="lazy" /></figure>
+            <div class="eyebrow">COMPUTER SERVICE</div>
+            <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+            <h2 class="section-heading" style="font-size:1.85rem;">IT Hardware &amp; Software</h2>
+            <p class="section-sub">We troubleshoot hardware and software problems to get computers back to stable working condition.</p>
+            <div class="pill-tags">
+              <span class="pill-tag">Desktop</span>
+              <span class="pill-tag">Laptop</span>
+              <span class="pill-tag">Hardware</span>
+              <span class="pill-tag">Software</span>
+            </div>
+            <a class="full-details-link" href="helpdesk.html?service=IT%20Hardware%20%26%20Software#formPanel">View Full Details &rarr;</a>
+          </div>
+          <div class="sub-cards">
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div><h4>System Diagnostics</h4><p>Quick fault finding for boot, display, and performance issues.</p></div></div>
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h4>Hardware Repair</h4><p>Component checks and replacement for failed parts.</p></div></div>
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div><h4>Software Troubleshooting</h4><p>OS-level fixes, updates, and stability improvements.</p></div></div>
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div><div><h4>Performance Cleanup</h4><p>Optimization to improve response time and daily usability.</p></div></div>
+          </div>
+        </div>
+
+        <!-- 2. CCTV -->
+        <div class="service-split reverse" id="cctv" data-service-block>
           <div>
             <figure class="svc-photo"><img src="images/cctv.jpg" alt="CCTV camera with live analytics dashboard" loading="lazy" /></figure>
             <div class="eyebrow">SURVEILLANCE</div>
@@ -92,37 +128,13 @@
           </div>
         </div>
 
-        <!-- 2. EPBX (Telephone) -->
-        <div class="service-split reverse" data-service-block>
-          <div class="sub-cards">
-            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div><div><h4>EPBX Installation</h4><p>On-site EPBX deployment with device and extension onboarding.</p></div></div>
-            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div><h4>Call Flow Design</h4><p>Call routing, transfer paths, and department-level mapping.</p></div></div>
-            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div><h4>Extension Configuration</h4><p>Numbering plans for teams, branches, and support desks.</p></div></div>
-            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h4>Maintenance &amp; Troubleshooting</h4><p>Quick diagnostics for line quality and routing issues.</p></div></div>
-          </div>
-          <div>
-            <figure class="svc-photo"><img src="images/epbx.jpg" alt="EPBX telephone system on an office desk" loading="lazy" /></figure>
-            <div class="eyebrow">TELEPHONY</div>
-            <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
-            <h2 class="section-heading" style="font-size:1.85rem;">EPBX (Telephone)</h2>
-            <p class="section-sub">We deploy EPBX systems that simplify internal communication and improve call handling.</p>
-            <div class="pill-tags">
-              <span class="pill-tag">EPBX Core</span>
-              <span class="pill-tag">Internal Extensions</span>
-              <span class="pill-tag">Transfer/Forward</span>
-              <span class="pill-tag">Scalable</span>
-            </div>
-            <a class="full-details-link" href="helpdesk.html?service=EPBX%20%28Telephone%29#formPanel">View Full Details &rarr;</a>
-          </div>
-        </div>
-
         <!-- 3. Networking -->
-        <div class="service-split" data-service-block>
+        <div class="service-split" id="networking" data-service-block>
           <div>
             <figure class="svc-photo"><img src="images/networking.jpg" alt="Corporate networking rack and cabling" loading="lazy" /></figure>
             <div class="eyebrow">CONNECTIVITY</div>
             <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
-            <h2 class="section-heading" style="font-size:1.85rem;">Networking</h2>
+            <h2 class="section-heading" style="font-size:1.85rem;">Networking &amp; Cabling</h2>
             <p class="section-sub">From routing and switching to Wi-Fi planning, we build dependable networks for everyday work.</p>
             <div class="pill-tags">
               <span class="pill-tag">LAN</span>
@@ -130,7 +142,7 @@
               <span class="pill-tag">VLAN</span>
               <span class="pill-tag">Managed Devices</span>
             </div>
-            <a class="full-details-link" href="helpdesk.html?service=Networking#formPanel">View Full Details &rarr;</a>
+            <a class="full-details-link" href="helpdesk.html?service=Networking%20%26%20Cabling#formPanel">View Full Details &rarr;</a>
           </div>
           <div class="sub-cards">
             <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div><div><h4>Network Planning</h4><p>Topology and segment planning based on users, rooms, and load.</p></div></div>
@@ -140,14 +152,56 @@
           </div>
         </div>
 
-        <!-- 4. Electrical Wiring -->
-        <div class="service-split reverse" data-service-block>
-          <div class="sub-cards">
-            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div><div><h4>Line Routing</h4><p>Neat and protected wire routing for indoor and outdoor segments.</p></div></div>
-            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div><h4>Load Assessment</h4><p>Line and point planning for safe and balanced electrical usage.</p></div></div>
-            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div><h4>Power for Devices</h4><p>Dedicated points for IT and surveillance systems.</p></div></div>
-            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h4>Safety Compliance</h4><p>Execution with grounding and protective measures where required.</p></div></div>
+        <!-- 4. EPBX (Telephone) -->
+        <div class="service-split reverse" id="epbx" data-service-block>
+          <div>
+            <figure class="svc-photo"><img src="images/epbx.jpg" alt="EPBX telephone system on an office desk" loading="lazy" /></figure>
+            <div class="eyebrow">TELEPHONY</div>
+            <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+            <h2 class="section-heading" style="font-size:1.85rem;">EPBX &amp; Telecom</h2>
+            <p class="section-sub">We deploy EPBX systems that simplify internal communication and improve call handling.</p>
+            <div class="pill-tags">
+              <span class="pill-tag">EPBX Core</span>
+              <span class="pill-tag">Internal Extensions</span>
+              <span class="pill-tag">Transfer/Forward</span>
+              <span class="pill-tag">Scalable</span>
+            </div>
+            <a class="full-details-link" href="helpdesk.html?service=EPBX%20%26%20Telecom#formPanel">View Full Details &rarr;</a>
           </div>
+          <div class="sub-cards">
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div><div><h4>EPBX Installation</h4><p>On-site EPBX deployment with device and extension onboarding.</p></div></div>
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div><h4>Call Flow Design</h4><p>Call routing, transfer paths, and department-level mapping.</p></div></div>
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div><h4>Extension Configuration</h4><p>Numbering plans for teams, branches, and support desks.</p></div></div>
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h4>Maintenance &amp; Troubleshooting</h4><p>Quick diagnostics for line quality and routing issues.</p></div></div>
+          </div>
+        </div>
+
+        <!-- 5. Server & IT Administrative Support -->
+        <div class="service-split" id="server-it-admin" data-service-block>
+          <div>
+            <figure class="svc-photo"><img src="images/server-cloud.jpg" alt="Server, NAS and cloud setup" loading="lazy" decoding="async" /></figure>
+            <div class="eyebrow">SERVERS &amp; ADMINISTRATION</div>
+            <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+            <h2 class="section-heading" style="font-size:1.85rem;">Server &amp; IT Administrative Support</h2>
+            <p class="section-sub">Custom NAS builds, secure file sharing, cloud workspace setup, remote backup, and ongoing IT administration with annual maintenance contracts.</p>
+            <div class="pill-tags">
+              <span class="pill-tag">NAS</span>
+              <span class="pill-tag">Cloud &amp; Backup</span>
+              <span class="pill-tag">Admin Support</span>
+              <span class="pill-tag">AMC</span>
+            </div>
+            <a class="full-details-link" href="helpdesk.html?service=Server%20%26%20IT%20Administrative%20Support#formPanel">View Full Details &rarr;</a>
+          </div>
+          <div class="sub-cards">
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div><div><h4>Server &amp; NAS Setup</h4><p>Custom NAS builds with secure shared folders for teams.</p></div></div>
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div><h4>Cloud &amp; Backup</h4><p>Cloud workspace setup and remote backup solutions.</p></div></div>
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div><h4>IT Administration</h4><p>Software installation, user setup, and day-to-day administrative support.</p></div></div>
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h4>Annual Maintenance (AMC)</h4><p>Regular health checks and priority support under a yearly contract.</p></div></div>
+          </div>
+        </div>
+
+        <!-- 6. Electrical Wiring -->
+        <div class="service-split reverse" id="electrical" data-service-block>
           <div>
             <figure class="svc-photo"><img src="images/electrical.jpg" alt="Electrical wiring installation" loading="lazy" /></figure>
             <div class="eyebrow">POWER INFRASTRUCTURE</div>
@@ -162,10 +216,16 @@
             </div>
             <a class="full-details-link" href="helpdesk.html?service=Electrical%20Wiring#formPanel">View Full Details &rarr;</a>
           </div>
+          <div class="sub-cards">
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div><div><h4>Line Routing</h4><p>Neat and protected wire routing for indoor and outdoor segments.</p></div></div>
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div><h4>Load Assessment</h4><p>Line and point planning for safe and balanced electrical usage.</p></div></div>
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div><h4>Power for Devices</h4><p>Dedicated points for IT and surveillance systems.</p></div></div>
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h4>Safety Compliance</h4><p>Execution with grounding and protective measures where required.</p></div></div>
+          </div>
         </div>
 
-        <!-- 5. Biometrics -->
-        <div class="service-split" data-service-block>
+        <!-- 7. Biometrics -->
+        <div class="service-split" id="biometrics" data-service-block>
           <div>
             <figure class="svc-photo"><img src="images/biometrics.jpg" alt="Wall-mounted fingerprint access reader" loading="lazy" /></figure>
             <div class="eyebrow">IDENTITY CONTROL</div>
@@ -188,14 +248,8 @@
           </div>
         </div>
 
-        <!-- 6. Access Log (Card Permission) -->
-        <div class="service-split reverse" data-service-block>
-          <div class="sub-cards">
-            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div><h4>Access Hardware Setup</h4><p>Reader, lock, and controller setup for controlled entry.</p></div></div>
-            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h4>Permission Mapping</h4><p>Role-based card permission assignment and updates.</p></div></div>
-            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div><h4>Entry/Exit Logging</h4><p>Access activity records for review and audit needs.</p></div></div>
-            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div><div><h4>Zone Protection</h4><p>Controlled access for sensitive rooms and equipment zones.</p></div></div>
-          </div>
+        <!-- 8. Access Log (Card Permission) -->
+        <div class="service-split reverse" id="access-control" data-service-block>
           <div>
             <figure class="svc-photo"><img src="images/access-log.jpg" alt="Keycard scanning at an access control reader" loading="lazy" /></figure>
             <div class="eyebrow">ACCESS CONTROL</div>
@@ -210,29 +264,11 @@
             </div>
             <a class="full-details-link" href="helpdesk.html?service=Access%20Log%20%28Card%20Permission%29#formPanel">View Full Details &rarr;</a>
           </div>
-        </div>
-
-        <!-- 7. Computer Repairing -->
-        <div class="service-split" data-service-block>
-          <div>
-            <figure class="svc-photo"><img src="images/pc-laptop.jpg" alt="Technician repairing a computer" loading="lazy" /></figure>
-            <div class="eyebrow">COMPUTER SERVICE</div>
-            <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-            <h2 class="section-heading" style="font-size:1.85rem;">Computer Repairing</h2>
-            <p class="section-sub">We troubleshoot hardware and software problems to get computers back to stable working condition.</p>
-            <div class="pill-tags">
-              <span class="pill-tag">Desktop</span>
-              <span class="pill-tag">Laptop</span>
-              <span class="pill-tag">Hardware</span>
-              <span class="pill-tag">Software</span>
-            </div>
-            <a class="full-details-link" href="helpdesk.html?service=Computer%20Repairing#formPanel">View Full Details &rarr;</a>
-          </div>
           <div class="sub-cards">
-            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div><h4>System Diagnostics</h4><p>Quick fault finding for boot, display, and performance issues.</p></div></div>
-            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h4>Hardware Repair</h4><p>Component checks and replacement for failed parts.</p></div></div>
-            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div><h4>Software Troubleshooting</h4><p>OS-level fixes, updates, and stability improvements.</p></div></div>
-            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div><div><h4>Performance Cleanup</h4><p>Optimization to improve response time and daily usability.</p></div></div>
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div><h4>Access Hardware Setup</h4><p>Reader, lock, and controller setup for controlled entry.</p></div></div>
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h4>Permission Mapping</h4><p>Role-based card permission assignment and updates.</p></div></div>
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div><h4>Entry/Exit Logging</h4><p>Access activity records for review and audit needs.</p></div></div>
+            <div class="sub-card"><div class="icon-box" style="margin:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div><div><h4>Zone Protection</h4><p>Controlled access for sensitive rooms and equipment zones.</p></div></div>
           </div>
         </div>
 

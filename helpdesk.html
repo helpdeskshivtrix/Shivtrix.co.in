@@ -33,10 +33,9 @@
 <body>
   <header class="navbar">
     <div class="container nav-wrap">
-      <a class="logo" href="index.html">
+      <a class="logo" href="index.html" aria-label="Shivtrix Computer Service Center - Home">
         <span class="logo-mark"><img class="logo-still" src="logo.png" alt="Shivtrix logo" width="46" height="46" /><img class="logo-anim" src="logo-anim.webp" alt="" aria-hidden="true" width="46" height="46" loading="lazy" decoding="async" /></span><span class="logo-text"><strong>Shiv<em>Trix</em></strong><small>Computer Service Center</small></span>
       </a>
-      <button class="mobile-btn" id="mobileBtn" type="button" aria-expanded="false" aria-controls="navMenu">[MENU]</button>
       <nav aria-label="Primary Navigation">
         <ul class="nav-menu" id="navMenu">
           <li><a href="index.html">Home</a></li>
@@ -47,7 +46,10 @@
           <li><a href="helpdesk.html">Helpdesk</a></li>
         </ul>
       </nav>
-      <a class="btn-quote" href="helpdesk.html">REQUEST QUOTE</a>
+      <div class="nav-actions">
+        <a class="btn-quote" href="helpdesk.html"><span class="q-long">Request&nbsp;</span>Quote</a>
+        <button class="mobile-btn" id="mobileBtn" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+      </div>
     </div>
   </header>
   <main>
@@ -74,13 +76,14 @@
               <div class="field">
                 <label for="fService">Service / Sector</label>
                 <select id="fService">
+                  <option value="IT Hardware &amp; Software">IT Hardware &amp; Software</option>
                   <option value="CCTV">CCTV</option>
-                  <option value="EPBX (Telephone)">EPBX (Telephone)</option>
-                  <option value="Networking">Networking</option>
+                  <option value="Networking &amp; Cabling">Networking &amp; Cabling</option>
+                  <option value="EPBX &amp; Telecom">EPBX &amp; Telecom</option>
+                  <option value="Server &amp; IT Administrative Support">Server &amp; IT Administrative Support</option>
                   <option value="Electrical Wiring">Electrical Wiring</option>
                   <option value="Biometrics">Biometrics</option>
                   <option value="Access Log (Card Permission)">Access Log (Card Permission)</option>
-                  <option value="Computer Repairing">Computer Repairing</option>
                   <option value="Mobile Repairing">Mobile Repairing</option>
                   <option value="Tools and Accessories">Tools and Accessories</option>
                   <option value="AC Repair">AC Repair</option>
