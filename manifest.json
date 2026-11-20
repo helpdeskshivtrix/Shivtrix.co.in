@@ -1,7 +1,0 @@
-{
-  "name": "Domino Pro",
-  "short_name": "Domino",
-  "start_url": "yt.html",
-  "display": "standalone",
-  "orientation": "landscape"
-}
